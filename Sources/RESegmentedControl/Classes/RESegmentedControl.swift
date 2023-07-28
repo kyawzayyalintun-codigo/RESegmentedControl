@@ -22,6 +22,8 @@ open class RESegmentedControl: UIControl {
         collectionViewFlow.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         return collectionViewFlow
     }()
+    
+    public var onSelectionChange: ((Int) -> Void)?
 
     /// Collection view that displays a list of segment's text and image
     private lazy var collectionView: UICollectionView = {
@@ -131,6 +133,8 @@ open class RESegmentedControl: UIControl {
                     self.sendActions(for: .valueChanged)
                 }
             }
+            
+            onSelectionChange?(selectedSegmentIndex)
         }
     }
 
